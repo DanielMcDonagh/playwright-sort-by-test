@@ -12,32 +12,29 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './tests',
 
-  /* Run tests in files in parallel */
-  fullyParallel: true,
-  
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
-  forbidOnly: !!process.env.CI,
-  
-  /* Retry on CI only */
-  retries: 1,
-  
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  timeout: 120000, // Set a global timeout of 120 seconds for each test
   
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    headless: true,
-    viewport: {width: 1920, height: 1080},
-    /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://localhost:3000',
-
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    headless: true, // Run tests in headless mode
+    viewport: {width: 1920, height: 1080}, // Set the viewport size for tests
+    baseURL: process.env.BASE_URL || 'https://highlifeshop.com', // Base URL to use in actions like `await page.goto('/')`.
+    screenshot: 'on', // Take a screenshot on every test
+    video: 'on', // Record video only on test failure
+    trace: 'on', // Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer
   },
 
-  /* Configure projects for major browsers */
+  testDir: 'tests',
+  retries: 1, // Retry on CI only once if a test fails. Set to 0 to disable retries.
+  reporter: [
+    ['list'], // Use the list reporter to output test results in the console. See https://playwright.dev/docs/test-reporters#list-reporter
+    ['html'], // Use HTML reporter to generate a report of the test results. See https://playwright.dev/docs/test-reporters#html-reporter
+  ],
+
+  fullyParallel: true, // Run tests in parallel across all projects. Set to false to run tests sequentially.
+
+  // Configure projects for major browsers
   projects: [
     {
       name: 'chromium',
