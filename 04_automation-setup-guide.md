@@ -24,7 +24,7 @@ For the purpose of this test, the locators have been seperated into their own pr
 ## Project Setup
 
 ```bash
-git clone https://github.com/daniel-mcdonagh/playwright-sort-by-test.git
+git clone https://github.com/danielmcdonagh/playwright-sort-by-test.git
 cd playwright-sort-by-test
 npm ci
 npx playwright install --with-deps

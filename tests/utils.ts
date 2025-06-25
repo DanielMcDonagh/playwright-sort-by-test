@@ -1,4 +1,3 @@
-// tests/utils.ts
 import { Locator, Page } from '@playwright/test';
 
 // Highlight an element by giving it a red glow for a short duration

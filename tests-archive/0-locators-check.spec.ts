@@ -1,6 +1,7 @@
-// tests/locators-check.spec.ts
 import { test, expect } from '@playwright/test';
 import CafePage from '../pages/CafePage';
+
+// Archived test to ensure all locators are working correctly, can be utilised when adding new locators or changing existing ones.
 
 test('locator sanity check', async ({ page }) => {
   const P = new CafePage(page);

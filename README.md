@@ -1,6 +1,6 @@
 # Playwright Sort-By Test Suite
 
-This repository contains focused end-to-end test suite that validates the **"Sort By"** functionality on [High Life Shop’s Speedbird Café](https://highlifeshop.com/speedbird-cafe). This project was built to demonstrate test design thinking, automation best practices, and CI/CD integration using Playwright + TypeScript.
+This repository contains focused end-to-end test suite that validates the **"Sort By"** functionality on [High Life Shop’s Café](https://highlifeshop.com/cafe). This project was built to demonstrate test design thinking, automation best practices, and CI/CD integration using Playwright + TypeScript.
 It was created as part of a technical test, and currently only holds one automated test case as per the technical test.
 
 As per the technical test, for each point a markdown file has been created to document the outcomes. Click any link below to jump to the full spec, strategy, or design notes.
@@ -55,7 +55,7 @@ playwright-sort-by-test/
 Clone the repo and install dependencies:
 
 ```bash
-git clone https://github.com/daniel-mcdonagh/playwright-sort-by-test.git
+git clone https://github.com/danielmcdonagh/playwright-sort-by-test.git
 cd playwright-sort-by-test
 npm ci
 npx playwright install --with-deps
