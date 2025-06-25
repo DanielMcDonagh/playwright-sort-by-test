@@ -8,7 +8,6 @@ test('TCX2 – descending Product Z-A sort persists across pages', async ({ page
   await test.step('Navigate to the cafe listing and decline cookies', async () => {
     // Navigate to the cafe listing
     await page.goto('/cafe');
-    await page.waitForLoadState('networkidle');
 
     // Decline cookies banner if it appears
     if (await Page.declineCookies.isVisible()) {
@@ -33,7 +32,6 @@ test('TCX2 – descending Product Z-A sort persists across pages', async ({ page
     // Highlight and go to Page 2
     await highlight(Page.page2Link, page);
     await Page.page2Link.click();
-    await page.waitForLoadState('networkidle');
 
     // check the first product is Grind Flat White Coffee
     await expect(Page.productNames.first()).toHaveText(/Grind Flat White Coffee/, {timeout: 30000});
@@ -42,7 +40,6 @@ test('TCX2 – descending Product Z-A sort persists across pages', async ({ page
     // Highlight and go to Page 1
     await highlight(Page.page1Link, page);
     await Page.page1Link.click();
-    await page.waitForLoadState('networkidle');
   });
 
   await test.step('Sort products by Product Z-A', async () => {
@@ -53,7 +50,6 @@ test('TCX2 – descending Product Z-A sort persists across pages', async ({ page
     // Highlight and select the “Product Z-A” option (data-value="product_desc")
     await highlight(Page.sortOption('product_desc'), page);
     await Page.sortOption('product_desc').click();
-    await page.waitForLoadState('networkidle');
 
     // Check first product is Wolfys Creamy Honey Porridge 50g, wait up to 30s for loading gif to finish
     await expect(Page.productNames.first()).toHaveText(/Wolfys Creamy Honey Porridge 50g/, {timeout: 30000});
@@ -64,7 +60,6 @@ test('TCX2 – descending Product Z-A sort persists across pages', async ({ page
     // Highlight and go to Page 2
     await highlight(Page.page2Link, page);
     await Page.page2Link.click();
-    await page.waitForLoadState('networkidle');
 
     // Check the first product is Vithit Mango and Pineapple 330ml
     await expect(Page.productNames.first()).toHaveText(/Vithit Mango and Pineapple 330ml/, {timeout: 60000});
