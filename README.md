@@ -43,7 +43,7 @@ playwright-sort-by-test/
 - Sorting by name in **descending** order using Playwright E2E tests  
 - Custom **Page Object Model** for better scalability and maintainability  
 - Robust test assertions using array comparison  
-- Functional, isolated automation — one spec, one job  
+- Functional, isolated automation - one spec, one job  
 - **CI-integrated** via GitHub Actions (`.yml` file included)  
 - Annotated Markdown documentation explaining:
   - Acceptance criteria
@@ -82,7 +82,7 @@ npx playwright show-report
 
 ## Why This Project Exists
 
-This suite simulates a real QA Engineer challenge — demonstrating not just technical execution but the thought process behind test coverage, documentation clarity, and automation that aligns with business expectations.
+This suite simulates a real QA Engineer challenge - demonstrating not just technical execution but the thought process behind test coverage, documentation clarity, and automation that aligns with business expectations.
 
 You can follow the included `.md` files to see **how the feature was decomposed and tested**, including setup steps, scaling philosophy, and test case structure.
 

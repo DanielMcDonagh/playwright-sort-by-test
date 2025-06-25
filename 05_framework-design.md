@@ -6,7 +6,7 @@ Can you explain how you would organize and scale the test framework, and what be
 
 ## Introduction
 
-This document describes how to evolve our Playwright+TypeScript test suite as it grows — adding new tests, pages or entire domains - while minimising maintenance overhead. It also revisits the key best practices we’ve applied here and introduces additional ones suited to larger projects.
+This document describes how to evolve our Playwright+TypeScript test suite as it grows - adding new tests, pages or entire domains - while minimising maintenance overhead. It also revisits the key best practices we’ve applied here and introduces additional ones suited to larger projects.
 
 ## 1. What We’ve Done Well
 
@@ -20,7 +20,7 @@ This document describes how to evolve our Playwright+TypeScript test suite as it
   Use of `test.step()` blocks and named specs makes failures self-documenting and easy to debug.
 
 - **Deterministic Artifacts**  
-  Configured `screenshot: 'on'`, `video: 'on'`, and `trace: 'on'` so every run—pass or fail—yields full diagnostics.
+  Configured `screenshot: 'on'`, `video: 'on'`, and `trace: 'on'` so every run-pass or fail-yields full diagnostics.
 
 - **TypeScript Safety**  
   Strict typing catches invalid locators and mis-named methods at compile time.
@@ -46,7 +46,7 @@ Inside each folder, split “happy path” from edge cases by wrapping them in `
 For shared widgets (headers, footers, modals), introduce `pages/components/`. Tests import only the component classes they need.
 
 ### 2.3 Fixtures & Shared State  
-Use Playwright’s fixture system (`fixtures/`) to set up global preconditions—authentication tokens, test data, feature flags — so tests remain declarative:
+Use Playwright’s fixture system (`fixtures/`) to set up global preconditions-authentication tokens, test data, feature flags - so tests remain declarative:
 
 ```ts
 import { test as base } from '@playwright/test';
@@ -73,7 +73,7 @@ This structure keeps test code unchanged while extending coverage.
 
 ## 3. Additional Best Practices for Larger Projects
 
-As we look ahead to larger feature sets and team growth, here are a handful of simple, human-friendly guidelines to keep our test suite maintainable, reliable, and easy to understand—whether you’re a developer, QA specialist, or stakeholder.
+As we look ahead to larger feature sets and team growth, here are a handful of simple, human-friendly guidelines to keep our test suite maintainable, reliable, and easy to understand-whether you’re a developer, QA specialist, or stakeholder.
 
 ### 1. Group Tests by Feature, Not by File Count
 
@@ -109,7 +109,7 @@ As we look ahead to larger feature sets and team growth, here are a handful of s
   Screenshots and videos turn “something failed” into “I see exactly what broke.”
 
 • **What to do**  
-  - Always capture screenshots and short video clips—even on passing tests—so we can replay the user journey.  
+  - Always capture screenshots and short video clips-even on passing tests-so we can replay the user journey.  
   - Publish an HTML report that anyone can click through; no command-line expertise required.  
   - Send automatic notifications (Slack, email) with clear pass/fail summaries and links to artifacts.
 
@@ -120,7 +120,7 @@ As we look ahead to larger feature sets and team growth, here are a handful of s
 
 • **What to do**  
   - Keep test data (user accounts, sample orders) in simple JSON or spreadsheet tables.  
-  - Store URLs, credentials, and flags in environment-specific config—never inside test scripts.  
+  - Store URLs, credentials, and flags in environment-specific config-never inside test scripts.  
   - Use a tiny “setup” step to log in or seed data before each test, so scenarios stay independent and repeatable.
 
 ### 6. Emphasise Code Quality & Collaboration
@@ -130,7 +130,7 @@ As we look ahead to larger feature sets and team growth, here are a handful of s
 
 • **What to do**  
   - Enforce consistent styling (auto-formatting) and linting so diffs are clean and reviews are fast.  
-  - Require every new test or selector change to pass through a peer review—sharing context helps everyone learn.  
+  - Require every new test or selector change to pass through a peer review-sharing context helps everyone learn.  
   - Maintain a short, printable “cheat sheet” of commands, folder layout, and troubleshooting tips for new team members.
 
 ### 7. Keep Evolving
@@ -141,8 +141,8 @@ Finally, treat the framework itself as a living project. Schedule periodic “he
 - Remove or refactor rarely used helpers.  
 - Add new utilities (e.g. accessibility checks, performance metric capture) as the team’s skills and priorities grow.
 
-By adopting these practices in our next project, we’ll ensure our end-to-end suite remains fast to run, easy to maintain, and transparent for everyone—developers, QA, and stakeholders alike.
+By adopting these practices in our next project, we’ll ensure our end-to-end suite remains fast to run, easy to maintain, and transparent for everyone-developers, QA, and stakeholders alike.
 
 ## 4. Summary
 
-By layering locators, actions, fixtures and tests; grouping by feature; parameterising via data files; and enforcing CI best practices, we can scale from a single “Sort By” workflow to a comprehensive E2E suite covering all user journeys—while keeping maintenance manageable and team contributions friction-free.  
+By layering locators, actions, fixtures and tests; grouping by feature; parameterising via data files; and enforcing CI best practices, we can scale from a single “Sort By” workflow to a comprehensive E2E suite covering all user journeys-while keeping maintenance manageable and team contributions friction-free.  
