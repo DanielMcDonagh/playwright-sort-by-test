@@ -1,9 +1,12 @@
-```markdown
-# 05 – Framework Design
+# Framework Design
 
-This document describes how to evolve our Playwright+TypeScript test suite as it grows—adding new tests, pages or entire domains—while minimising maintenance overhead. It also revisits the key best practices we’ve applied here and introduces additional ones suited to larger projects.
+## Technical Test Prompt 5
 
----
+Can you explain how you would organize and scale the test framework, and what best practices you would apply for a larger project from a theoretical standpoint?
+
+## Introduction
+
+This document describes how to evolve our Playwright+TypeScript test suite as it grows — adding new tests, pages or entire domains - while minimising maintenance overhead. It also revisits the key best practices we’ve applied here and introduces additional ones suited to larger projects.
 
 ## 1. What We’ve Done Well
 
@@ -11,7 +14,7 @@ This document describes how to evolve our Playwright+TypeScript test suite as it
   All selectors live in `pages/` classes with no embedded actions, so UI updates touch one file only.
 
 - **Utility Wrappers**  
-  Reusable helpers (`clickHighlighted()`, `expectVisible()`, etc.) centralise waiting, logging, and highlighting logic.
+  Reusable helpers (`clickHighlighted()`) centralise the highlighting logic, cna be expanded to include other utility helpers.
 
 - **Structured Tests**  
   Use of `test.step()` blocks and named specs makes failures self-documenting and easy to debug.
@@ -21,8 +24,6 @@ This document describes how to evolve our Playwright+TypeScript test suite as it
 
 - **TypeScript Safety**  
   Strict typing catches invalid locators and mis-named methods at compile time.
-
----
 
 ## 2. Scaling the Framework
 
@@ -39,13 +40,13 @@ tests/
 └── auth/              # login, signup, permissions
 ```
 
-Inside each folder, split “happy path” from edge cases via `test.describe()` or separate files.
+Inside each folder, split “happy path” from edge cases by wrapping them in `test.describe()` or separate files.
 
 ### 2.2 Component-Level POMs  
 For shared widgets (headers, footers, modals), introduce `pages/components/`. Tests import only the component classes they need.
 
 ### 2.3 Fixtures & Shared State  
-Use Playwright’s fixture system (`fixtures/`) to set up global preconditions—authentication tokens, test data, feature flags—so tests remain declarative:
+Use Playwright’s fixture system (`fixtures/`) to set up global preconditions—authentication tokens, test data, feature flags — so tests remain declarative:
 
 ```ts
 import { test as base } from '@playwright/test';
@@ -70,13 +71,9 @@ In `playwright.config.ts`, define multiple projects for:
 
 This structure keeps test code unchanged while extending coverage.
 
----
-
 ## 3. Additional Best Practices for Larger Projects
 
 As we look ahead to larger feature sets and team growth, here are a handful of simple, human-friendly guidelines to keep our test suite maintainable, reliable, and easy to understand—whether you’re a developer, QA specialist, or stakeholder.
-
----
 
 ### 1. Group Tests by Feature, Not by File Count
 
@@ -87,8 +84,6 @@ As we look ahead to larger feature sets and team growth, here are a handful of s
   - Create folders under `tests/` named after high-level features (e.g. `sorting/`, `checkout/`, `login/`).  
   - Keep “happy-path” and “edge-case” scenarios together, so everyone knows where to add or look for new tests.
 
----
-
 ### 2. Centralise Page Structure & Shared Components
 
 • **Why it matters**  
@@ -97,8 +92,6 @@ As we look ahead to larger feature sets and team growth, here are a handful of s
 • **What to do**  
   - Maintain one “map” of selectors for each page or common component (headers, footers, modals).  
   - Let tests simply say “click the Sort dropdown” rather than spelling out every CSS rule.
-
----
 
 ### 3. Streamline Our CI Pipeline
 
@@ -110,8 +103,6 @@ As we look ahead to larger feature sets and team growth, here are a handful of s
   - **Parallel Runs**: Divide tests across multiple workers so a 5-minute suite can run in 1–2 minutes.  
   - **Caching**: Store downloaded browsers and dependencies so builds start instantly.
 
----
-
 ### 4. Deliver Clear, Actionable Reports
 
 • **Why it matters**  
@@ -121,8 +112,6 @@ As we look ahead to larger feature sets and team growth, here are a handful of s
   - Always capture screenshots and short video clips—even on passing tests—so we can replay the user journey.  
   - Publish an HTML report that anyone can click through; no command-line expertise required.  
   - Send automatic notifications (Slack, email) with clear pass/fail summaries and links to artifacts.
-
----
 
 ### 5. Separate Test Data & Environment Settings
 
@@ -134,8 +123,6 @@ As we look ahead to larger feature sets and team growth, here are a handful of s
   - Store URLs, credentials, and flags in environment-specific config—never inside test scripts.  
   - Use a tiny “setup” step to log in or seed data before each test, so scenarios stay independent and repeatable.
 
----
-
 ### 6. Emphasise Code Quality & Collaboration
 
 • **Why it matters**  
@@ -146,8 +133,6 @@ As we look ahead to larger feature sets and team growth, here are a handful of s
   - Require every new test or selector change to pass through a peer review—sharing context helps everyone learn.  
   - Maintain a short, printable “cheat sheet” of commands, folder layout, and troubleshooting tips for new team members.
 
----
-
 ### 7. Keep Evolving
 
 Finally, treat the framework itself as a living project. Schedule periodic “health checks” to:
@@ -156,13 +141,8 @@ Finally, treat the framework itself as a living project. Schedule periodic “he
 - Remove or refactor rarely used helpers.  
 - Add new utilities (e.g. accessibility checks, performance metric capture) as the team’s skills and priorities grow.
 
----
-
 By adopting these practices in our next project, we’ll ensure our end-to-end suite remains fast to run, easy to maintain, and transparent for everyone—developers, QA, and stakeholders alike.
-
----
 
 ## 4. Summary
 
 By layering locators, actions, fixtures and tests; grouping by feature; parameterising via data files; and enforcing CI best practices, we can scale from a single “Sort By” workflow to a comprehensive E2E suite covering all user journeys—while keeping maintenance manageable and team contributions friction-free.  
-```

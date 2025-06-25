@@ -1,17 +1,25 @@
 
 # Automation Setup Guide
 
+## Technical Test Prompt 4
+
+Could you choose a scenario from the sorting tests and implement its automation? You can use any language and framework, but we value the use of Playwright with TypeScript, as it’s the stack we use in the project. Use github to share the repository.
+
+## Introduction
+
+For the purpose of this technical test, I have selected the test case TCX2 - Sorting works with pagination from 02_test-cases.md. The test should demonstrate some simple navigation, interactions, and checks, in order to result in a passing test. I have also included the ability to report via snapshots, videos, and a trace feed, which will demonstrate the ability to highlight the elements that get selected when testing for debugging purposes.
+
+## Outline
+
 This document walks through the setup and execution of the end-to-end test suite for validating **“Sort By”** functionality on [High Life Café](https://highlifeshop.com/cafe). It outlines the tools, structure, and reasoning behind key automation decisions to support readability, reuse, and reliable CI integration.
 
----
+For the purpose of this test, the locators have been seperated into their own private class, CafePage.ts, so that they are kept in a centralised location. This enables easier maintainability and scalability later on.
 
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/en) (v18 or later recommended)  
 - [Git](https://git-scm.com/downloads)  
 - Recommended Terminals: Git Bash (Windows) and Command Line, or any Unix-compatible shell  
-
----
 
 ## Project Setup
 
@@ -23,8 +31,6 @@ npx playwright install --with-deps
 ```
 
 This installs all dependencies from 'package-lock.json' and sets up browser drivers required by Playwright (Chromium, Firefox, WebKit).
-
----
 
 ## Folder Overview
 
@@ -52,8 +58,6 @@ playwright-sort-by-test/
 
 We follow a modular structure, separating **selectors** into their `pages/`, **test logic** into `tests/`, and environment/config into `.github/` & `playwright.config.ts`.
 
----
-
 ## How to Run the Test Suite
 
 - Run all tests headless (default):
@@ -66,8 +70,6 @@ We follow a modular structure, separating **selectors** into their `pages/`, **t
   ```
 
 By default, tests run headless with a fixed viewport (1920x1080) as defined in `playwright.config.ts`.
-
----
 
 ## Understanding the Test
 
@@ -93,8 +95,6 @@ The primary test (`tests/tcx2-sort-with-pagination.spec.ts`) validates that sort
 - **`tests/utils.ts`**  
   Small helpers for:  
   - **`highlight()`** – briefly flashes a red outline around a Locator to help with visual recording of a test execution
-
----
 
 ## Key Config (`playwright.config.ts`)
 
@@ -146,8 +146,6 @@ export default defineConfig({
 });
 ```
 
----
-
 ## Continuous Integration
 
 In `.github/workflows/playwright.yml`:
@@ -191,8 +189,6 @@ jobs:
 
 You can download and view report artifacts directly from the GitHub Actions UI.
 
----
-
 ## Optional Debugging
 
 - **Headed mode** (browser visible):
@@ -208,15 +204,11 @@ You can download and view report artifacts directly from the GitHub Actions UI.
   npx playwright test tests/sort-with-pagination.spec.ts
   ```
 
----
-
 ## Extending the Suite
 
 - **New sort scenarios**: plenty of scope to add other tests to the suite, based on contents of 02_test-cases.md
 - **Enhance the current POM or add more POMs**: CafePage.ts might not be the only POM required for later tests. By keeping locators centralised to their pages, it helps maintainability.
 - **Parallel & cross-browser**: configure projects in `playwright.config.ts`  
-
----
 
 ## Troubleshooting
 
@@ -252,16 +244,12 @@ npx playwright test --trace=on
 npx playwright show-trace trace.zip
 ```
 
----
-
 ## Helpful Resources
 
 - [Playwright Docs](https://playwright.dev/docs/intro)  
 - [Playwright Troubleshooting](https://playwright.dev/docs/test-troubleshooting)  
 - [GitHub Actions Docs](https://docs.github.com/actions)  
 - [axe-core/playwright Accessibility](https://github.com/microsoft/playwright/tree/master/packages/playwright-core/src/server/axe)  
-
----
 
 ## FAQ
 
@@ -272,9 +260,10 @@ A: It centralizes selectors in one place, making maintenance easier when the UI 
 A: Open `playwright-report/index.html` after `npx playwright show-report`. Passed tests will show their artifacts under the **Screenshots** and **Video** tabs.
 
 **Q: What does `trace: 'on'` capture?**  
-A: A complete record of network requests, DOM snapshots, and Playwright API calls—viewable with `npx playwright show-trace`.
-
----
+A: A complete record of network requests, DOM snapshots, and Playwright API calls-viewable with `npx playwright show-trace`.
 
 *This guide exists to make your automation portable, understandable, and a joy to debug.*
-```
+
+
+## Next Page
+- [05 – Framework Design](05_framework-design.md)

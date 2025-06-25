@@ -1,13 +1,19 @@
 # Acceptance Criteria
 
-## Original Prompt
+## Tech Test Prompt 1
 
 Help the team to refine the acceptance criteria. Rewrite what you need and add any additional criteria you consider. Raise questions if you need further definition from the Product Owner.
 
----
 
 ## Original Acceptance Criteria
 
+**ID:**
+BAU-123
+
+**Description:**
+As a user I want to sort my product list so that it's easier for me to find the product I want
+
+**Acceptance Criteria:**
 1. Given I am in the product list for the first time  
    Then the page is sorted by position
 
@@ -23,15 +29,14 @@ Help the team to refine the acceptance criteria. Rewrite what you need and add a
    And I click on the ↑ arrow icon  
    Then the list is sorted in descending order, otherwise in ascending order
 
----
 
 ## Refined Acceptance Criteria
 
-### Acceptance Criteria 1 — Initial Sort State
+### Acceptance Criteria 1 - Initial Sort State
 
-**Original:**  
-Given I am in the product list for the first time  
-Then the page is sorted by position
+**Original:**
+- Given I am in the product list for the first time  
+- Then the page is sorted by position
 
 **Refined:**  
 - Given I visit the product listing page for the first time  
@@ -46,23 +51,28 @@ Then the page is sorted by position
 - Should the default sort persist across sessions or be reset each time the page is loaded?
 - Should “Default” be a visible label to end users or only a development/configuration term?
 
----
 
-### Acceptance Criteria 2 — Sort Options List
+### Acceptance Criteria 2 - Sort Options List
 
 **Original:**  
-When I click the "Sort By" dropdown, I see four options: Position, Product Name, Price, New Arrivals
+- Given I am in the product list  
+- When I click with my mouse the “Sort By” dropdown control  
+-  Then I can see four options:  
+  - Position
+  - Product Name  
+  - Price  
+  - New Arrivals
 
 **Refined:**  
-- Given I open the “Sort By” dropdown menu  
-- Then I should see the following five options, in this order:
+- Given I am in the product list  
+- When I click with my mouse the “Sort By” dropdown control
+- Then I should see the following options:
   1. Default  
   2. Product Name  
   3. Price  
   4. New Arrivals  
   5. [Reserved for future additions if needed]
 
-- And selecting “Default” should reset the list to its initial sort configuration
 
 **Clarifications and Questions:**  
 - Is “Default” a user-facing term, or should it be translated into something more meaningful (e.g., “Recommended”)?
@@ -70,17 +80,16 @@ When I click the "Sort By" dropdown, I see four options: Position, Product Name,
 - Should the dropdown retain the last selected option upon page reload or navigation?
 - Will different categories or product groups present different sort options?
 
----
 
-### Acceptance Criteria 3 — Sort Direction Toggle
+### Acceptance Criteria 3 - Sort Direction Toggle
 
 **Original:**  
-Given I am in the product list  
-And I click on the ↑ arrow icon  
-Then the list is sorted in descending order, otherwise in ascending order
+- Given I am in the product list  
+- And I click on the ↑ arrow icon  
+- Then the list is sorted in descending order, otherwise in ascending order
 
 **Refined:**  
-- Given I have selected a sort option  
+- Given I am in the product list  
 - When I click the sort direction toggle icon  
 - Then the product list should switch between ascending and descending order
 
@@ -89,7 +98,6 @@ Then the list is sorted in descending order, otherwise in ascending order
 - Does the sort direction toggle affect the Default sort, or is it disabled for that option?
 - Should sort direction be preserved across page reloads, or reset to ascending by default?
 
----
 
 ## Additional Considerations
 
@@ -100,15 +108,13 @@ Then the list is sorted in descending order, otherwise in ascending order
 - Should sort changes trigger analytics or tracking events?
 - Will sorting be entirely client-side, or are server-side responses expected per sort criteria?
 
----
 
 ## Provisional Acceptance Criteria (Under Investigation)
 
-The following criteria are exploratory and not yet confirmed as part of the accepted scope. They raise potentially useful capabilities and edge cases for further discussion with the team and Product Owner.
+The following criteria are provisional and not yet confirmed as part of the accepted scope. They raise potentially useful capabilities and edge cases for further discussion with the team and Product Owner.
 
----
 
-### Provisional AC 1 — Role-Based Behavior
+### Provisional AC 1 - Role-Based Behavior
 
 - The sort controls and options are available to all users, regardless of authentication status.
 - No sort behavior changes based on user role, locale, or permissions.
@@ -117,9 +123,8 @@ The following criteria are exploratory and not yet confirmed as part of the acce
 - Are any product segments or sort types gated by user permissions?
 - Should authenticated users have persistent sort preferences across sessions?
 
----
 
-### Provisional AC 2 — Data State and Volume
+### Provisional AC 2 - Data State and Volume
 
 - The sort component handles product lists with over 100 items without noticeable degradation in responsiveness.
 - Sort behavior must remain consistent across paginated and non-paginated product views.
@@ -128,9 +133,8 @@ The following criteria are exploratory and not yet confirmed as part of the acce
 - Will sort be handled client-side, server-side, or hybrid?
 - Should sorting apply to all matching results or only the current page?
 
----
 
-### Provisional AC 3 — Accessibility
+### Provisional AC 3 - Accessibility
 
 - Sort controls are fully operable via keyboard navigation
 - Sort state is programmatically accessible to screen readers
@@ -140,9 +144,8 @@ The following criteria are exploratory and not yet confirmed as part of the acce
 - Are WCAG compliance targets formally defined?
 - Have NVDA and VoiceOver behavior been tested?
 
----
 
-### Provisional AC 4 — Sort State in URL
+### Provisional AC 4 - Sort State in URL
 
 - The active sort type and direction are reflected in the browser’s URL
 - Refreshing or sharing the page preserves the selected sort state
@@ -151,4 +154,6 @@ The following criteria are exploratory and not yet confirmed as part of the acce
 - Is this pattern used in other filter components across the site?
 - Are there SEO or analytics implications for deep linking?
 
----
+
+## Next Page 
+- [02 – Test Cases](02_test-cases.md)  

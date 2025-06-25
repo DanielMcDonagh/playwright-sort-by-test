@@ -55,7 +55,7 @@ test('TCX2 – descending Product Z-A sort persists across pages', async ({ page
     await Page.sortOption('product_desc').click();
     await page.waitForLoadState('networkidle');
 
-    // Check first product is Wolfys Creamy Honey Porridge 50g
+    // Check first product is Wolfys Creamy Honey Porridge 50g, wait up to 30s for loading gif to finish
     await expect(Page.productNames.first()).toHaveText(/Wolfys Creamy Honey Porridge 50g/, {timeout: 30000});
   });
     await highlight(Page.productNames.first(), page);

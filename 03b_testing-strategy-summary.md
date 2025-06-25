@@ -1,9 +1,13 @@
 # Testing Strategy Summary
 
-## Purpose  
-A concise overview of how we’ll validate the “Sort By” feature on the High Life Café product listing page—from requirements through to production release—so anyone (recruiters, juniors, or team members) can understand our quality guardrails, risk mitigation, and timeline.
+## Technical Test Prompt 3
 
----
+What testing phases/processes would you apply to validate the implemented sorting feature, from the initial idea to production delivery? (e.g., exploratory testing, system testing, etc.)
+
+This Summary is to be seen as a TLDR overview of the original Testing Strategy document. This could be utilised for stakeholders, juniors, or other teams in a real situation.
+
+## Purpose  
+A concise overview of how we’ll validate the “Sort By” feature on the High Life Café product listing page-from requirements through to production release - so anyone (stakeholders, juniors, or team members) can understand our quality guardrails, risk mitigation, and timeline.
 
 ## High-Level Phases
 
@@ -31,8 +35,6 @@ A concise overview of how we’ll validate the “Sort By” feature on the High
    • Full E2E suite runs on every deploy to staging/production.  
    • Manual smoke tests confirm core flows (sort, reset, URL deep-link) before sign-off.
 
----
-
 ## Sprint-Level Roadmap
 
 | Sprint Week      | Focus                                        |
@@ -42,8 +44,6 @@ A concise overview of how we’ll validate the “Sort By” feature on the High
 | Week 4–5         | Complete automation; exploratory & a11y      |
 | Week 6 (Pre-Ship)| Performance/load checks; smoke & sign-off    |
 
----
-
 ## Key Readiness Checkpoints
 
 - All must-have criteria have at least one automated test  
@@ -52,7 +52,8 @@ A concise overview of how we’ll validate the “Sort By” feature on the High
 - Performance targets met (<2 s for large lists)  
 - CI build passes & smoke tests green on staging  
 
----
-
 ## Summary  
-Our layered approach ensures we catch issues early, automate repeatable checks, and deliver a robust, accessible, high-performing sort experience. For the full traceability matrix and detailed test cases, see **02_test-cases.md**.  
+Our layered approach ensures we catch issues early, automate repeatable checks, and deliver a robust, accessible, high-performing sort experience. For the full traceability matrix and detailed test cases, see **02_test-cases.md**.
+
+## Next Page 
+- [04 – Automation Setup Guide](04_automation-setup-guide.md)

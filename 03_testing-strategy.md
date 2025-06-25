@@ -1,12 +1,14 @@
 # Testing Strategy
 
+## Technical Test Prompt 3
+
+What testing phases/processes would you apply to validate the implemented sorting feature, from the initial idea to production delivery? (e.g., exploratory testing, system testing, etc.)
+
 ## 1. Introduction
 
-This document outlines the planned testing approach for the "Sort By" functionality on the High Life Café product listing page. It describes which testing practices will be applied across the lifecycle of delivery—from initial requirements through to production validation—and how they contribute to team confidence, risk mitigation, and sustainable coverage.
+This document outlines the planned testing approach for the "Sort By" functionality on the High Life Café product listing page. It describes which testing practices will be applied across the lifecycle of delivery - from initial requirements through to production validation-and how they contribute to team confidence, risk mitigation, and sustainable coverage.
 
 We take a layered approach to quality, introducing different testing types at appropriate stages, combining proactive collaboration with repeatable automation.
-
----
 
 ## 2. Testing Phases and Processes
 
@@ -18,15 +20,11 @@ We take a layered approach to quality, introducing different testing types at ap
 
 This phase ensures we build the right thing before building it right.
 
----
-
 ### Phase 2: Unit Testing (Developer-level)
 
 - Developers will validate local logic for sort selection, dropdown toggling, and parameter parsing using unit tests.
 - Sorting utility functions and component state transitions will be isolated and tested independently of the DOM.
 - Component-level unit tests using a UI framework (e.g., React Testing Library) may be used to verify prop/state behavior.
-
----
 
 ### Phase 3: System and Functional Testing
 
@@ -39,11 +37,9 @@ This phase ensures we build the right thing before building it right.
   - URL-driven sort restoration
 
 **Progressive test development:**  
-We will stub selectors and draft test steps in advance, allowing us to validate markup expectations and ensure shared understanding between developers and testers—even before full UI rendering is available.
+We can stub selectors and draft test steps in advance, allowing us to validate markup expectations and ensure shared understanding between developers and testers - even before full UI rendering is available.
 
 Once stable, the suite will run in CI via GitHub Actions against each pull request and deployment to prevent regressions.
-
----
 
 ### Phase 4: Exploratory Testing
 
@@ -56,15 +52,11 @@ Once stable, the suite will run in CI via GitHub Actions against each pull reque
 
 Findings will be documented and used to harden the suite and prompt functional refinement.
 
----
-
 ### Phase 5: Accessibility Testing
 
 - Manual keyboard navigation will be tested on all sort controls.
 - Screen reader output (e.g., NVDA and VoiceOver) will be observed to ensure dropdowns and toggles are correctly labeled and operable.
 - ARIA attributes and visible focus indicators will be reviewed to align with WCAG 2.1 AA standards.
-
----
 
 ### Phase 6: Performance and Load Testing
 
@@ -72,21 +64,15 @@ Findings will be documented and used to harden the suite and prompt functional r
 - Tools such as Locust, K6, or asynchronous Python scripts (e.g. using `httpx` or `aiohttp`) will simulate concurrent sort interactions and validate backend/API handling.
 - Cold start scenarios (e.g., clearing cache, applying sort immediately) will be profiled with Lighthouse to assess first-paint and interaction timing.
 
----
-
 ### Phase 7: Regression Testing
 
 - The end-to-end suite will be run automatically in CI to protect the feature during product iterations.
 - Tagged tests may allow selective execution on critical branches or build stages.
 
----
-
 ### Phase 8: Release Validation
 
 - Manual and automated smoke tests will validate the sort behavior after deployment to staging or production.
 - Sort order, UI feedback, and dropdown accessibility will be verified across supported browsers/devices.
-
----
 
 ## 3. Tooling Overview
 
@@ -100,11 +86,9 @@ Findings will be documented and used to harden the suite and prompt functional r
 | Python (httpx/aiohttp)| Lightweight async load testing (alternative)  |
 | VoiceOver / NVDA      | Manual accessibility testing (screen readers) |
 
----
-
 ## 4. Traceability and Coverage
 
-Each acceptance criterion—refined or provisional—has at least one corresponding test case. This traceability allows us to audit test completeness and demonstrate feature readiness at a glance.
+Each acceptance criteria - refined or provisional - has at least one corresponding test case. This traceability allows us to audit test completeness and demonstrate feature readiness at a glance.
 
 ### Summary Table
 
@@ -115,32 +99,26 @@ Each acceptance criterion—refined or provisional—has at least one correspond
 
 For detailed mapping of tests to criteria and their automation status, see `02_test-cases.md`.
 
----
-
 ## 5. Risks and Mitigations
 
-| Risk                                       | Mitigation Strategy                                  |
-|--------------------------------------------|------------------------------------------------------|
+| Risk                                        | Mitigation Strategy                                  |
+|---------------------------------------------|------------------------------------------------------|
 | Vague sorting definitions (e.g. “Position”) | Clarified during refinement; mapped to internal ID   |
 | Duplicate product values                    | Tested fallback sorting with repeated inputs         |
 | Accessibility regressions                   | Manual screen reader and keyboard navigation tests   |
 | Performance lag with large data sets        | Simulated via high-volume test data and profiling    |
 | Unstable sort state on refresh/navigation   | Validated with exploratory flows and URL tracing     |
 
----
-
 ## 6. Practical Test Roadmap
 
-| Sprint Phase       | Activity                                                                  |
-|--------------------|---------------------------------------------------------------------------|
-| Planning           | Confirm and refine acceptance criteria                                    |
-| Early Development  | Write unit tests for sort logic; start building UI; stub E2E tests        |
-| Mid Development    | Implement core sorting logic; begin functional test execution             |
+| Sprint Phase       | Activity                                                                   |
+|--------------------|----------------------------------------------------------------------------|
+| Planning           | Confirm and refine acceptance criteria                                     |
+| Early Development  | Write unit tests for sort logic; start building UI; stub E2E tests         |
+| Mid Development    | Implement core sorting logic; begin functional test execution              |
 | Late Development   | Complete Playwright automation; begin exploratory and accessibility testing|
-| Pre-release        | Run performance/load tests; validate accessibility on staging             |
-| Post-release       | Conduct smoke testing; verify URL-driven sorting; gather feedback         |
-
----
+| Pre-release        | Run performance/load tests; validate accessibility on staging              |
+| Post-release       | Conduct smoke testing; verify URL-driven sorting; gather feedback          |
 
 ## 7. QA Readiness Checklist
 
@@ -154,8 +132,10 @@ Before merging or releasing the Sort By feature, confirm the following:
 - [ ] E2E test suite runs cleanly in CI/CD pipeline  
 - [ ] Manual smoke test executed in staging and/or production  
 
----
-
 ## 8. Summary
 
-This strategy balances agility with accountability. Testing isn't left to the end or siloed off—it’s a collaborative effort embedded into refinement, development, and deployment. By pairing automation with thoughtful manual exploration, we can deliver a sort experience that is resilient to change, thoroughly monitored, and consistently validated.
+This strategy balances agility with accountability. Testing isn't left to the end or siloed off-it’s a collaborative effort embedded into refinement, development, and deployment. By pairing automation with thoughtful manual exploration, we can deliver a sort experience that is resilient to change, thoroughly monitored, and consistently validated.
+
+## Next Page
+- [03b – Testing Strategy Summary](03b_testing-strategy-summary.md)  
+- [04 – Automation Setup Guide](04_automation-setup-guide.md)

@@ -14,8 +14,6 @@ As per the technical test, for each point a markdown file has been created to do
 - [04 – Automation Setup Guide](04_automation-setup-guide.md)  
 - [05 – Framework Design](05_framework-design.md)
 
----
-
 ## Project Structure
 
 ```
@@ -40,8 +38,6 @@ playwright-sort-by-test/
 └── README.md                                   # You are here
 ```
 
----
-
 ## What's Covered
 
 - Sorting by name in **descending** order using Playwright E2E tests  
@@ -53,8 +49,6 @@ playwright-sort-by-test/
   - Acceptance criteria
   - Testing approach
   - Automation reasoning and setup
-
----
 
 ## Getting Started
 
@@ -79,8 +73,6 @@ Optional: open the HTML report after test run
 npx playwright show-report
 ```
 
----
-
 ## Tech Stack
 
 - [Playwright](https://playwright.dev) + [TypeScript](https://www.typescriptlang.org/)  
@@ -88,15 +80,11 @@ npx playwright show-report
 - Page Object Model for separation of concerns  
 - Markdown for documentation + review visibility
 
----
-
 ## Why This Project Exists
 
 This suite simulates a real QA Engineer challenge — demonstrating not just technical execution but the thought process behind test coverage, documentation clarity, and automation that aligns with business expectations.
 
 You can follow the included `.md` files to see **how the feature was decomposed and tested**, including setup steps, scaling philosophy, and test case structure.
-
----
 
 ## Next Steps / Ideas
 
